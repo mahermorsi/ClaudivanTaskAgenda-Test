@@ -1,0 +1,8 @@
+{
+  "platformName": "Android",
+  "platformVersion": "14.0",
+  "deviceName": "emulator-5554",
+  "appPackage": "com.android.settings",
+  "appActivity": ".Settings",
+  "automationName": "UiAutomator2"
+}
