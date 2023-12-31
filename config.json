@@ -1,0 +1,8 @@
+{
+  "platformName": "Android",
+  "platformVersion": "14.0",
+  "deviceName": "emulator-5554",
+  "appPackage": "com.claudivan.taskagenda",
+  "appActivity": "com.claudivan.taskagenda.Activities.MainActivity",
+  "automationName": "UiAutomator2"
+}
