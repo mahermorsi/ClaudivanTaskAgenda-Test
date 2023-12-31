@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import logic.EventsPage;
 import logic.Sittings;
 import logic.WeekEvent;
 import org.junit.Assert;
@@ -20,6 +21,7 @@ public class WeekEventSteps {
     private static AndroidDriver<MobileElement> driver;
     private final TestContext context;
     private Sittings sittings;
+    private EventsPage events;
 
     public WeekEventSteps(TestContext context) throws MalformedURLException {
         this.context = context;
@@ -88,5 +90,54 @@ public class WeekEventSteps {
     @Then("verify that monday is the first day of the week")
     public void verifyThatMondayIsTheFirstDayOfTheWeek() {
         Assert.assertEquals(weekEvent.checkFirstDayOfTheWeek(),"Mon");
+    }
+
+    @And("i click on all events")
+    public void iClickOnAllEvents() {
+        weekEvent.clickAllEvents();
+    }
+
+    @And("i click on the event")
+    public void iClickOnTheEvent() {
+        events=new EventsPage(context.get("driver"));
+        events.clickOnEvent();
+    }
+
+    @And("click the delete button")
+    public void clickTheDeleteButton() {
+        events.deleteEvent();
+    }
+
+    @And("click yes to delete that event")
+    public void clickYesToDeleteThatEvent() {
+        events.yesDeleteButton();
+    }
+
+    @Then("verify the event is deleted")
+    public void verifyTheEventIsDeleted() {
+        Assert.assertEquals(events.checkDeleteEvent(),"NO PENDING EVENT");
+    }
+
+    @When("i click on three pm")
+    public void iClickOnPm() {
+        weekEvent.clickOn3PmtoAddEvent();
+    }
+
+    @And("click new event")
+    public void clickNewEvent() {
+        weekEvent.clickOnNewEvent();
+    }
+
+//    @And("fill a event {string}")
+//    public void fillAEventString() {
+//    }
+
+//    @And("click save")
+//    public void clickSave() {
+//    }
+
+    @Then("the {string} event will be added")
+    public void theEventWillBeAdded(String eventName) {
+        Assert.assertEquals(weekEvent.checkAddingNewEventAt3oClock(),eventName);
     }
 }
