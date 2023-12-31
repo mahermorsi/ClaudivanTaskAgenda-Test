@@ -26,8 +26,8 @@ Feature: Adding/ remove Events
       And click yes to delete that event
       Then verify the event is deleted
 
-    Scenario: verify adding a new event at 3pm
-      When i click on three pm
+    Scenario: verify adding a new event at 4pm
+      When i click on four pm
       And click new event
       And i fill a event 'party'
       And i click save

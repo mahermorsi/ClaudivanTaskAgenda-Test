@@ -1,13 +1,11 @@
 package logic;
 
-import Infrastructure.AppiumWrapper;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.net.MalformedURLException;
 
 public class WeekEvent{
     private static AndroidDriver<MobileElement> driver;
@@ -29,9 +27,9 @@ public class WeekEvent{
     private final String SITTINGS_BUTTON="com.claudivan.taskagenda:id/tvAjustes";
     private final String FIRST_DAY_OF_THE_WEEK= "//android.widget.TextView[@resource-id=\"com.claudivan.taskagenda:id/dia_semana\" and @text=\"Mon\"]";
     private final String ALL_EVENTS_BUTTON="com.claudivan.taskagenda:id/btEventos";
-    private final String ADD_EVENT_AT_THREE_O_CLOCK="//android.widget.LinearLayout[@resource-id=\"com.claudivan.taskagenda:id/containerColunasHorarios\"]/android.widget.RelativeLayout[3]";
+    private final String ADD_EVENT_AT_FOUR_O_CLOCK ="//android.widget.LinearLayout[@resource-id=\"com.claudivan.taskagenda:id/containerColunasHorarios\"]/android.widget.RelativeLayout[3]";
     private final String NEW_EVENT_BUTTON="//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"New event\"]";
-    private final String THREE_EVENT_DETAILS="com.claudivan.taskagenda:id/tvTitulo";
+    private final String FOUR_EVENT_DETAILS ="com.claudivan.taskagenda:id/tvTitulo";
     public void clickOnPlusButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id(PLUS_BUTTON)));
@@ -120,11 +118,11 @@ public class WeekEvent{
         allEventsButton.click();
     }
 
-    public void clickOn3PmtoAddEvent() {
+    public void clickon4Pmtoaddevent() {
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath(ADD_EVENT_AT_THREE_O_CLOCK)));
-        MobileElement addEventAt3Oclock = driver.findElement(MobileBy.xpath(ADD_EVENT_AT_THREE_O_CLOCK));
-        addEventAt3Oclock.click();
+                (By.xpath(ADD_EVENT_AT_FOUR_O_CLOCK)));
+        MobileElement addEventAt4Oclock = driver.findElement(MobileBy.xpath(ADD_EVENT_AT_FOUR_O_CLOCK));
+        addEventAt4Oclock.click();
     }
 
     public void clickOnNewEvent() {
@@ -135,12 +133,12 @@ public class WeekEvent{
     }
     public String checkAddingNewEventAt3oClock(){
         allowTask();
-        clickOn3PmtoAddEvent();
+        clickon4Pmtoaddevent();
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id(THREE_EVENT_DETAILS)));
-        MobileElement threeEventDetails = driver.findElement(MobileBy.id(THREE_EVENT_DETAILS));
-        threeEventDetails.click();
-        return threeEventDetails.getAttribute("text");
+                (By.id(FOUR_EVENT_DETAILS)));
+        MobileElement fourEventDetails = driver.findElement(MobileBy.id(FOUR_EVENT_DETAILS));
+        fourEventDetails.click();
+        return fourEventDetails.getAttribute("text");
 
     }
 }

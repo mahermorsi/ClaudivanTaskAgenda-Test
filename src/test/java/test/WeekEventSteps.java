@@ -118,9 +118,9 @@ public class WeekEventSteps {
         Assert.assertEquals(events.checkDeleteEvent(),"NO PENDING EVENT");
     }
 
-    @When("i click on three pm")
+    @When("i click on four pm")
     public void iClickOnPm() {
-        weekEvent.clickOn3PmtoAddEvent();
+        weekEvent.clickon4Pmtoaddevent();
     }
 
     @And("click new event")
