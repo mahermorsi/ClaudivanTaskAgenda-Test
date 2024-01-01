@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WeekEvent extends BaseMobilePage {
+public class WeekEventPage extends BaseMobilePage {
     WebDriverWait wait;
 
     private  final String PLUS_BUTTON="com.claudivan.taskagenda:id/btNovoEvento";
@@ -23,7 +23,7 @@ public class WeekEvent extends BaseMobilePage {
     private final String MENU_BUTTON="com.claudivan.taskagenda:id/hamburguer";
     private final String SITTINGS_BUTTON="com.claudivan.taskagenda:id/tvAjustes";
     private final String FIRST_DAY_OF_THE_WEEK= "//android.widget.TextView[@resource-id=\"com.claudivan.taskagenda:id/dia_semana\" and @text=\"Mon\"]";
-    public WeekEvent(AndroidDriver<MobileElement> driver){
+    public WeekEventPage(AndroidDriver<MobileElement> driver){
         super(driver);
         wait= new WebDriverWait(this.driver, 5);
     }
@@ -62,15 +62,11 @@ public class WeekEvent extends BaseMobilePage {
 
     public String checkPendingEvent() {
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id(PENDING_EVENT_BUTTON)));
-        MobileElement pendingEventButton = driver.findElement(MobileBy.id(PENDING_EVENT_BUTTON));
-        pendingEventButton.click();
+                (By.id(PENDING_EVENT_BUTTON))).click();
         //allowTask();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath(EVENTS_PENDING)));
-        MobileElement eventButton = driver.findElement(MobileBy.xpath(EVENTS_PENDING));
-        eventButton.click();
+                (By.xpath(EVENTS_PENDING))).click();
 
         MobileElement eventName = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id(EVENT_NAME)));

@@ -1,12 +1,13 @@
 package test;
 
+import infrastructure.MobilePageWrapper;
 import infrastructure.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import logic.ColorsAndEventTypesPage;
 import logic.SubMenuPage;
-import logic.WeekEvent;
+import logic.WeekEventPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -21,13 +22,15 @@ public class SubMenuTest {
 
     @And("I click on top left menu icon")
     public void iClickOnTopLeftMenuIcon() {
-        WeekEvent weekEvent = context.get("weekEvent");
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        WeekEventPage weekEvent = mobileWrapper.getCurrentPage();
         weekEvent.clickOnMenu();
     }
 
     @When("I click on Late events")
     public void iClickOnLateEvents() {
-        subMenuPage = new SubMenuPage(context.get("driver"));
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        subMenuPage = mobileWrapper.createPage(SubMenuPage.class);
         subMenuPage.clickOnLateEvents();
     }
 
@@ -38,13 +41,15 @@ public class SubMenuTest {
 
     @When("I click on Colors and event types")
     public void iClickOnColorsAndEeventTypes() {
-        subMenuPage = new SubMenuPage(context.get("driver"));
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        subMenuPage = mobileWrapper.createPage(SubMenuPage.class);
         subMenuPage.clickOnColorsAndEvent();
     }
 
     @And("I click on Dark mode")
     public void iClickOnDarkMode() {
-        colorsAndEventTypesPage = new ColorsAndEventTypesPage(context.get("driver"));
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        colorsAndEventTypesPage = mobileWrapper.createPage(ColorsAndEventTypesPage.class);
         colorsAndEventTypesPage.clickOnDarkMode();
     }
 
@@ -60,7 +65,8 @@ public class SubMenuTest {
 
     @When("I click on All events")
     public void iClickOnAllEvents() {
-        subMenuPage = new SubMenuPage(context.get("driver"));
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        subMenuPage = mobileWrapper.createPage(SubMenuPage.class);
         subMenuPage.clickOnAllEvents();
     }
 
