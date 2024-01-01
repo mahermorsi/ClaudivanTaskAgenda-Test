@@ -31,7 +31,7 @@ public class Hooks {
     public void tearDown() throws IOException, InterruptedException {
         System.out.println("Scenario ENDED, cleaning environment and closing driver");
         AndroidDriver<MobileElement> driver =context.get("driver");
-        driver.close();
+        //driver.close();
 
 
     }

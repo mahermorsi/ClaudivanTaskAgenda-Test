@@ -16,18 +16,17 @@ import java.net.MalformedURLException;
 public class WeekEventSteps {
 
     private WeekEvent weekEvent;
-    private static AndroidDriver<MobileElement> driver;
-    private final TestContext context;
+    public TestContext context;
     private Settings sittings;
 
-    public WeekEventSteps(TestContext context) throws MalformedURLException {
+    public WeekEventSteps(TestContext context){
         this.context = context;
     }
 
     @Given("i am on week page")
-    public void iAmOnWeekPage() throws MalformedURLException {
-
+    public void iAmOnWeekPage() {
         weekEvent=new WeekEvent(context.get("driver"));
+        context.put("weekEvent", weekEvent);
     }
 
     @When("i click on plus icon")
