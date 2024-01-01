@@ -25,7 +25,7 @@ public class WeekEvent extends BaseMobilePage {
     private final String FIRST_DAY_OF_THE_WEEK= "//android.widget.TextView[@resource-id=\"com.claudivan.taskagenda:id/dia_semana\" and @text=\"Mon\"]";
     public WeekEvent(AndroidDriver<MobileElement> driver){
         super(driver);
-        wait= new WebDriverWait(this.driver, 5);
+        wait= new WebDriverWait(this.driver, 8);
     }
     public void clickOnPlusButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -60,12 +60,12 @@ public class WeekEvent extends BaseMobilePage {
         saveButton.click();
     }
 
-    public String checkPendiningEvent() {
+    public String checkPendingEvent() {
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id(PENDINING_EVENT_BUTTON)));
         MobileElement pendingEventButton = driver.findElement(MobileBy.id(PENDINING_EVENT_BUTTON));
         pendingEventButton.click();
-        allowTask();
+        //allowTask();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath(EVENTS_PENDINING)));

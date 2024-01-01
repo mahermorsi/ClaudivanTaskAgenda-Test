@@ -1,8 +1,5 @@
 package test;
 import infrastructure.TestContext;
-import infrastructure.AppiumWrapper;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,8 +7,6 @@ import io.cucumber.java.en.When;
 import logic.Settings;
 import logic.WeekEvent;
 import org.junit.Assert;
-
-import java.net.MalformedURLException;
 
 public class WeekEventSteps {
 
@@ -51,7 +46,7 @@ public class WeekEventSteps {
 
     @Then("validate the event {string} is added")
     public void validateTheEventIsAdded(String eventName) {
-        Assert.assertEquals(weekEvent.checkPendiningEvent(),eventName);
+        Assert.assertEquals(weekEvent.checkPendingEvent(),eventName);
     }
 
 
