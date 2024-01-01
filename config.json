@@ -1,8 +1,8 @@
 {
   "platformName": "Android",
-  "platformVersion": "14.0",
-  "deviceName": "emulator-5554",
-  "appPackage": "com.android.settings",
-  "appActivity": ".Settings",
+  "platformVersion": "9.0",
+  "deviceName": "SM-G955F",
+  "appPackage": "com.claudivan.taskagenda",
+  "appActivity": ".Activities.MainActivity",
   "automationName": "UiAutomator2"
 }
