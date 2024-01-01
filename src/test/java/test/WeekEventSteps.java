@@ -1,19 +1,20 @@
 package test;
+import infrastructure.MobilePageWrapper;
 import infrastructure.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import logic.Settings;
-import logic.WeekEvent;
+import logic.SettingsPage;
+import logic.WeekEventPage;
 import org.junit.Assert;
 
 
 public class WeekEventSteps {
 
-    private WeekEvent weekEvent;
+    private WeekEventPage weekEvent;
     public TestContext context;
-    private Settings sittings;
+    private SettingsPage settings;
 
     public WeekEventSteps(TestContext context){
         this.context = context;
@@ -21,8 +22,8 @@ public class WeekEventSteps {
 
     @Given("i am on week page")
     public void iAmOnWeekPage() {
-        weekEvent=new WeekEvent(context.get("driver"));
-        context.put("weekEvent", weekEvent);
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        weekEvent = mobileWrapper.createPage(WeekEventPage.class);
     }
 
     @When("I click on plus icon")
@@ -47,6 +48,8 @@ public class WeekEventSteps {
 
     @Then("validate the event {string} is added")
     public void validateTheEventIsAdded(String eventName) {
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        weekEvent = mobileWrapper.getCurrentPage();
         Assert.assertEquals(weekEvent.checkPendingEvent(),eventName);
     }
 
@@ -63,22 +66,30 @@ public class WeekEventSteps {
 
     @And("I click on first day of the week")
     public void iClickOnFirstDayOfTheWeek() {
-        sittings=new Settings(context.get("driver"));
-        sittings.clickOnFirstDayOfTheWeek();
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        settings = mobileWrapper.createPage(SettingsPage.class);
+        settings.clickOnFirstDayOfTheWeek();
     }
 
     @And("I chose monday to be the first day of the week")
     public void iChoseMondayToBeTheFirstDayOfTheWeek() {
-        sittings.choseFirstDayOfTheWeek();
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        settings = mobileWrapper.getCurrentPage();
+        settings.choseFirstDayOfTheWeek();
     }
 
     @And("click on back button")
     public void clickOnBackButton() {
-        sittings.clickBackButton();
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        settings = mobileWrapper.getCurrentPage();
+        settings.clickBackButton();
     }
 
     @Then("verify that monday is the first day of the week")
     public void verifyThatMondayIsTheFirstDayOfTheWeek() {
+        MobilePageWrapper mobileWrapper = context.get("MobileWrapper");
+        weekEvent = mobileWrapper.createPage(WeekEventPage.class);
+
         Assert.assertEquals(weekEvent.checkFirstDayOfTheWeek(),"Mon");
     }
 }

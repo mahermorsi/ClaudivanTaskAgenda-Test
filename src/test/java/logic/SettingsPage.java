@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Settings extends BaseMobilePage {
+public class SettingsPage extends BaseMobilePage {
 
     WebDriverWait wait;
 
@@ -22,7 +22,7 @@ public class Settings extends BaseMobilePage {
     private final String CHOSE_FIRST_DAY_OF_THE_WEEK="//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"Monday\"]";
     private final String BACK_BUTTON="//android.widget.ImageButton[@content-desc=\"Navigate up\"]";
     private final String HOME_PAGE_CLICK= "//android.widget.TextView[@resource-id=\"com.claudivan.taskagenda:id/tvTitulo\" and @text=\"Calendar\"]";
-    public Settings(AndroidDriver<MobileElement> driver) {
+    public SettingsPage(AndroidDriver<MobileElement> driver) {
         super(driver);
         wait= new WebDriverWait(this.driver, 5);
     }
