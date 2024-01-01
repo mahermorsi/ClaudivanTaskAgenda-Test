@@ -16,9 +16,9 @@ public class WeekEvent extends BaseMobilePage {
     private final String FILL_NAME= "com.claudivan.taskagenda:id/etTitulo";
     private final String FILL_NAME_TEXT= "//android.widget.EditText[@resource-id=\"com.claudivan.taskagenda:id/etTitulo\"]";
     private final String SAVE_BUTTON="com.claudivan.taskagenda:id/item_salvar";
-    private final String PENDINING_EVENT_BUTTON= "com.claudivan.taskagenda:id/btEventosSemana";
+    private final String PENDING_EVENT_BUTTON = "com.claudivan.taskagenda:id/btEventosSemana";
     private final String EVENT_NAME="com.claudivan.taskagenda:id/tvTitulo";
-    private final String EVENTS_PENDINING="//android.widget.ListView[@resource-id=\"com.claudivan.taskagenda:id/lvListaEventos\"]/android.widget.FrameLayout[1]/android.widget.RelativeLayout";
+    private final String EVENTS_PENDING ="//android.widget.ListView[@resource-id=\"com.claudivan.taskagenda:id/lvListaEventos\"]/android.widget.FrameLayout[1]/android.widget.RelativeLayout";
     private final String TASK_AGENDA_ALLOW_BUTTON="com.android.permissioncontroller:id/permission_allow_button";
     private final String MENU_BUTTON="com.claudivan.taskagenda:id/hamburguer";
     private final String SITTINGS_BUTTON="com.claudivan.taskagenda:id/tvAjustes";
@@ -60,21 +60,20 @@ public class WeekEvent extends BaseMobilePage {
         saveButton.click();
     }
 
-    public String checkPendiningEvent() {
+    public String checkPendingEvent() {
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id(PENDINING_EVENT_BUTTON)));
-        MobileElement pendingEventButton = driver.findElement(MobileBy.id(PENDINING_EVENT_BUTTON));
+                (By.id(PENDING_EVENT_BUTTON)));
+        MobileElement pendingEventButton = driver.findElement(MobileBy.id(PENDING_EVENT_BUTTON));
         pendingEventButton.click();
-        allowTask();
+        //allowTask();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath(EVENTS_PENDINING)));
-        MobileElement eventButton = driver.findElement(MobileBy.xpath(EVENTS_PENDINING));
+                (By.xpath(EVENTS_PENDING)));
+        MobileElement eventButton = driver.findElement(MobileBy.xpath(EVENTS_PENDING));
         eventButton.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated
+        MobileElement eventName = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id(EVENT_NAME)));
-        MobileElement eventName = driver.findElement(MobileBy.id(EVENT_NAME));
         return eventName.getAttribute("text");
     }
 
