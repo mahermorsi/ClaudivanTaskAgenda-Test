@@ -28,11 +28,9 @@ public class WeekEventSteps {
     }
 
     @Given("i am on week page")
-    public void iAmOnWeekPage() throws MalformedURLException {
-        AppiumWrapper appiumWrapper = new AppiumWrapper();
-        driver= appiumWrapper.getDriver();
-        context.put("driver",driver);
+    public void iAmOnWeekPage() {
         weekEvent=new WeekEvent(context.get("driver"));
+        context.put("weekEvent",weekEvent);
     }
 
     @When("i click on plus icon")
@@ -128,13 +126,6 @@ public class WeekEventSteps {
         weekEvent.clickOnNewEvent();
     }
 
-//    @And("fill a event {string}")
-//    public void fillAEventString() {
-//    }
-
-//    @And("click save")
-//    public void clickSave() {
-//    }
 
     @Then("the {string} event will be added")
     public void theEventWillBeAdded(String eventName) {

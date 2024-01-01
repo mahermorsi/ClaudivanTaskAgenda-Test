@@ -3,12 +3,12 @@ Feature: Adding/ remove Events
     Given i am on week page
     When i click on plus icon
     And i click on today button
-    And i fill a event 'name'
+    And i fill a event 'some event'
     And i click save
 
 
     Scenario: verify adding a new event
-      Then validate the event 'name' is added
+      Then validate the event 'some event' is added
 
     Scenario: change the first day of the week to Monday
       When i click on menu
@@ -18,7 +18,7 @@ Feature: Adding/ remove Events
       And click on back button
       Then verify that monday is the first day of the week
 
-    Scenario: delete a Event 'name'
+    Scenario: delete a Event 'some event'
       When i click on menu
       And i click on all events
       And i click on the event
